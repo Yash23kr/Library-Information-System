@@ -1,0 +1,13 @@
+<a href="/member/logout/">Logout</a>
+<a href="/member/view_books">View all books</a>
+<a href="/member/view_all_issued">View active issues</a>
+<a href="/member/history">View Issue history</a>
+<a href="/member/reminders">Reminder</a>
+<h1>Welcome {{user.get_username}}</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}

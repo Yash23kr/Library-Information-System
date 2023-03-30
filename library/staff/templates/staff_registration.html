@@ -1,0 +1,12 @@
+<h3>{{message}}</h3>
+<form method="POST">{% csrf_token %}
+    <span>Username</span>
+    <input type="text" name="username" required></input>
+    <span>Password</span>
+    <input type="password" name="password1" required></input>
+    <span>Confirm Password</span>
+    <input type="password" name="password2" required></input>
+    <span>Email</span>
+    <input type="email" name="email_id" >
+    <button type="submit">Register</button>
+</form>

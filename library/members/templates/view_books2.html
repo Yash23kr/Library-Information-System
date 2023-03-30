@@ -1,0 +1,29 @@
+<a href="/member/home">Home</a>
+<table>
+    <thead>
+        <tr>
+            <th><h4>Index</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>Issued From</h4></th>
+            <th><h4>Issued Till</h4></th>
+            <th><h4>Author</h4></th>
+            <th><h4>Isbn</h4></th>
+            <th><h4>Rack Number</h4></th>
+            <th><h4>Bill</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for iter in books %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{iter.book.name}}</td>
+            <td>{{iter.issued_from}}</td>
+            <td>{{iter.issued_till}}</td>
+            <td>{{iter.book.author}}</td>
+            <td>{{iter.book.isbn}}</td>
+            <td>{{iter.book.rack_number}}</td>
+            <td><a href="/member/view_bill/{{iter.id}}">Bill</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
