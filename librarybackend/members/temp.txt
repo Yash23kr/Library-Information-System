@@ -1,0 +1,16 @@
+book.issued_to = None
+    issued_from = book.issue_date
+    issued_till = datetime.date.today().isoformat()
+    reserved_members = book.member_set.all()
+    if len(reserved_members)==0:
+        book.is_available = True
+    else:
+        reserved_members.order_by('reserve_date')
+        reserved_members[0].reserved_book = None
+        reserved_members[0].save()
+        Reminder(user=reserved_members[0], book=book, message="This book is now available. Please issue this book", reminder_date=datetime.date.today().isoformat()).save()
+    book.is_returned = True
+    book.save()
+    Issue_database(user=member, book=book, issued_from=issued_from, issued_till=issued_till).save()
+    messages.success(request, "Book was successfully returned")
+    return redirect('/member/home',)

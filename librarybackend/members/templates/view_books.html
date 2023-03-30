@@ -1,0 +1,33 @@
+<a href="/member/home">Home</a>
+<form method="POST">{% csrf_token %}
+    <input type="text" name="search" >
+    <button type="submit">Search</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th><h4>Index</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>Author</h4></th>
+            <th><h4>Isbn</h4></th>
+            <th><h4>Rack Number</h4></th>
+            <th><h4>Actions</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.rack_number}}</td>
+            {% if book.is_available %}
+                <td><a href="/member/issue_book/{{book.id}}/">Issue</a></td>
+            {% else %}
+                <td><a href="/member/reserve_book/{{book.id}}/">Reserve</a></td>                
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
