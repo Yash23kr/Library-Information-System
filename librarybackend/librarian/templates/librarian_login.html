@@ -1,0 +1,9 @@
+<form method="POST">{% csrf_token %}
+    <h1>{{ message }}</h1>
+    <span>Username</span>
+    <input type="text" name="username" required>
+    <span>Password</span>
+    <input type="password" name="password">
+    <button type="submit">login</button>
+
+</form>

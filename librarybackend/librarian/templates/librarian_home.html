@@ -1,0 +1,15 @@
+
+<a href="/librarian/logout">logout</a>
+<a href="/librarian/view_all">View all books</a>
+<a href="/librarian/add_book">Add Book</a>
+<a href="/librarian/view_members">View All Members</a>
+<a href="/librarian/view_staff">View Clerks</a>
+<a href="/librarian/view_requests">View Joining requests</a>
+<h1>Welcome {{request.user.username}}</h1>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
