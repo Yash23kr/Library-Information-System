@@ -32,6 +32,12 @@ def login_admin(request):
         user = authenticate(username=username, password=password)
         if user is None:
             return render(request, 'librarian_login.html', {'message':'incorrect username or password'})
+        try:
+            user.librarian
+            login(request,user)
+            return redirect('/librarian/home')
+        except Exception:
+            return render(request, 'librarian_login.html', {'message':'You are not Authorised to access this page'})
         else:
             login(request,user)
             return redirect('/librarian/home')
@@ -39,6 +45,10 @@ def login_admin(request):
 
 @login_required(login_url='/librarian/login')
 def admin_home(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     return render(request, 'librarian_home.html')
 
 @login_required(login_url='/librarian/login')
@@ -48,22 +58,34 @@ def logout_admin(request):
 
 @login_required(login_url='/librarian/login')
 def view_all_books(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     if request.method == 'POST':
         name=request.POST.get('search')
         books = Book.objects.filter(name=name)
-        return render(request, 'view_all_books.html', {'books':books})
+        return render(request, 'librarian_view_all_books.html', {'books':books})
     books = Book.objects.all()
     books = books.order_by('issue_freq')
     books = books.reverse()
-    return render(request, 'view_all_books.html', {'books': books})
+    return render(request, 'librarian_view_all_books.html', {'books': books})
 
 @login_required(login_url='/librarian/login')
 def delete_book(request, book_id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     Book.objects.filter(id=book_id).delete()
     return redirect('/librarian/view_all')
 
 @login_required(login_url='/librarian/login')
 def add_book(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     if request.method == 'POST':
         name = request.POST.get('name',"")
         author = request.POST.get('author',"")
@@ -76,11 +98,19 @@ def add_book(request):
 
 @login_required(login_url='/librarian/login')
 def view_members(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     members=Member.objects.all()
-    return render(request, 'view_members.html', {'members': members})
+    return render(request, 'librarian_view_members.html', {'members': members})
 
 @login_required(login_url='/librarian/login')
 def delete_member(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     member = Member.objects.filter(id=id)
     member[0].user.delete()
     member.delete()
@@ -88,11 +118,19 @@ def delete_member(request, id):
 
 @login_required(login_url='/librarian/login')
 def view_staff(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     members=Staff.objects.all()
-    return render(request, 'view_staff.html', {'members': members})
+    return render(request, 'librarian_view_staff.html', {'members': members})
 
 @login_required(login_url='/librarian/login')
 def delete_staff(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     staff = Staff.objects.filter(id=id)
     staff[0].user.delete()
     staff.delete()
@@ -100,10 +138,19 @@ def delete_staff(request, id):
 
 @login_required(login_url='/librarian/login')
 def view_requests(request):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     requests = StaffRequest.objects.all()
-    return render(request, 'view_requests.html', {'requests': requests})
+    return render(request, 'librarian_view_requests.html', {'requests': requests})
+
 @login_required(login_url='/librarian/login')
 def approve_request(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     request = StaffRequest.objects.get(id=id)
     user = User.objects.create_user(username=request.username,password=request.password, email=request.email)
     staff = Staff.objects.create(user=user)
@@ -114,6 +161,10 @@ def approve_request(request, id):
 
 @login_required(login_url='/librarian/login')
 def delete_request(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
     StaffRequest.objects.filter(id=id).delete()
     return redirect('/librarian/view_requests')
         
