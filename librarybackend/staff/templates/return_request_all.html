@@ -1,4 +1,36 @@
-<a href="/staff/home">Home</a>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 80%;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+</style>
+<a href="/staff/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
+
 <table>
     <thead>
         <th><h4>User</h4></th>
@@ -12,7 +44,7 @@
             <td>{{iter.member.user.username}}</td>
             <td>{{iter.book.name}}</td>
             <td>{{iter.issue_date}}</td>
-            <td><a href="/staff/approve_return/{{iter.id}}">Approve return</a></td>
+            <td><a href="/staff/approve_return/{{iter.id}}" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Approve return</a></td>
         </tr>
         {% endfor %}
     </tbody>

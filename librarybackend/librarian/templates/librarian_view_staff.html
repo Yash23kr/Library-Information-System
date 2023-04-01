@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Library Management System</title>
+	<style>
+		/* Global styles */
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+			color: #333;
+		}
+
+		/* Header styles */
+		header {
+			background-color: #0366d6;
+			padding: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		header h1 {
+			color: #fff;
+			font-size: 28px;
+			margin: 0;
+		}
+
+		/* Link styles */
+		a {
+			color: #0366d6;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Table styles */
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin: 20px 0;
+		}
+
+		th, td {
+			padding: 10px;
+			border-bottom: 1px solid #ddd;
+			text-align: left;
+		}
+
+		th {
+			background-color: #f6f8fa;
+			font-weight: bold;
+		}
+
+		/* Delete button styles */
+		.delete-button {
+			background-color: #dc3545;
+			color: #fff;
+			padding: 8px 16px;
+			border-radius: 4px;
+			text-transform: uppercase;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.delete-button:hover {
+			background-color: #c82333;
+		}
+
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Library Clerk List</h1>
+		<nav>
+			<a href="/librarian/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
+		</nav>
+	</header>
+
+	<table>
+		<thead>
+			<tr>
+				<th><h4>Name</h4></th>
+				<th><h4>Actions</h4></th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for member in members %}
+			<tr>
+				<td>{{ member.user.username }}</td>
+				<td><a href="/librarian/delete_staff/{{ member.id }}" class="delete-button">Delete</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>

@@ -19,6 +19,8 @@ def register_member(request):
             return render(request, 'member_registration.html', {'message': 'Password mismatch'})
         if len(User.objects.filter(username=username))!=0 or len(StaffRequest.objects.filter(username=username))!=0:
             return render(request, 'member_registration.html', {'message':'user already exists please login'})
+        if len(User.objects.filter(email=email))!=0 or len(StaffRequest.objects.filter(email=email))!=0:
+            return render(request, 'member_registration.html', {'message':'Email has already been used!'})
         user = User.objects.create_user(username=username,password=password1, email=email)
         member = Member.objects.create(user=user, user_type=usertype)
         user.save()
@@ -41,10 +43,18 @@ def login_member(request):
 
 @login_required(login_url = '/member/login')
 def home_member(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     return render(request, 'home.html')
 
 @login_required(login_url = '/member/login')
 def view_books(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     if request.method == 'POST':
         name=request.POST.get('search')
         books = Book.objects.filter(name=name)
@@ -55,6 +65,10 @@ def view_books(request):
 
 @login_required(login_url = '/member/login')
 def issue_book(request,book_id):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     book = Book.objects.get(id=book_id)
     member = request.user.member
     issued_books = member.book_set.all()
@@ -88,6 +102,10 @@ def issue_book(request,book_id):
 
 @login_required(login_url = '/member/login')
 def reserve_book(request,book_id):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     book = Book.objects.get(id=book_id)
     member = request.user.member
     if book.issued_to == member:
@@ -105,13 +123,21 @@ def reserve_book(request,book_id):
 
 @login_required(login_url = '/member/login')
 def view_all_issued(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     member = request.user.member
     books = member.book_set.all()
     return render(request, 'view_all_issued.html',{'books':books})
 
 @login_required(login_url = '/member/login')
 def return_book(request,book_id):
-    member = request.user.member
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
+    """ member = request.user.member
     book = Book.objects.get(id=book_id)
     issued_from = book.issue_date
     issued_till = datetime.date.today()
@@ -136,27 +162,56 @@ def return_book(request,book_id):
         penalty = 10*(issued_days-180)
     Issue_database(user=member, book=book, issued_from=issued_from, issued_till=issued_till, penalty=penalty, tax=penalty*0.1, total_penalty=penalty*1.1).save()
     messages.success(request, "Book was successfully returned and bill has been generated. Please check the bill under the issue history section")
-    return redirect('/member/home',)
+    return redirect('/member/home',) """
+    member = request.user.member
+    book = Book.objects.get(id=book_id)
+    issued_from = book.issue_date
+    issued_till = datetime.date.today()
+    Return_request(member=member, book=book, issue_date=issued_from, request_date=issued_till).save()
+    messages.success(request, "Return request has been sent to the librarian. You will be notified once the book is returned")
+    return redirect('/member/home')
+
+
 
 @login_required(login_url = '/member/login')
 def issue_history(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     issue_database = Issue_database.objects.filter(user = request.user.member)
     return render(request, 'view_books2.html',{'books':issue_database})
 
 @login_required(login_url = '/member/login')
 def reminder_view(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     member = request.user.member
     reminders = member.reminder_set.all()
     return render(request, 'view_reminders.html',{'reminders':reminders})
 @login_required(login_url='member/login')
 def delete_reminder(request, reminder_id):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     Reminder.objects.get(id=reminder_id).delete()
     return redirect('/member/reminders')
 @login_required(login_url='member/login')
 def view_bill(request, id):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     database=Issue_database.objects.get(id=id)
     return render(request, 'bill.html', {'database': database})
 def logout_member(request):
+    try:
+        request.user.member
+    except Exception:
+        return render(request,'error.html')
     logout(request)
     return redirect("/")
 

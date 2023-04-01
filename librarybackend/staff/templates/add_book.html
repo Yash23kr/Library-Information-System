@@ -1,13 +1,86 @@
-<h3>{{message}}</h3>
-<a href="/staff/home">Home</a>
-<form method="POST">{% csrf_token %}
-    <span>Book Name</span>
-    <input type="text" name="name" required></input>
-    <span>Author</span>
-    <input type="text" name="author" required></input>
-    <span>ISBN</span>
-    <input type="text" name="isbn" >
-    <span>Rack Number</span>
-    <input type="text" name="rack_no" >
-    <button type="submit">Register</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+      h3 {
+        text-align: center;
+        font-size: 28px;
+        margin: 20px 0;
+      }
+      a.button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-bottom: 20px;
+      }
+      a.button:hover {
+        background-color: #3e8e41;
+      }
+      form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      span {
+        margin: 10px 0;
+        width: 100px;
+        font-weight: bold;
+      }
+      input[type="text"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      button[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>{{message}}</h3>
+    <a href="/staff/home" class="button">Home</a>
+    <form method="POST">
+      {% csrf_token %}
+      <span>Book Name</span>
+      <input type="text" name="name" required />
+      <span>Author</span>
+      <input type="text" name="author" required />
+      <span>ISBN</span>
+      <input type="text" name="isbn" />
+      <span>Rack Number</span>
+      <input type="text" name="rack_no" />
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
