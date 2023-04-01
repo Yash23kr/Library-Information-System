@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Formpage = styled.div`
   width: 100%;
@@ -137,11 +139,16 @@ const Password = styled.div`
     margin: 0px auto;
 `;
 
-const registrationform = () => {
+const Registrationform = () => {
+  const navigate=useNavigate();
+  const openpage = () => {
+    navigate("/");
+  };
+
   return (
     <Formpage>
       <Form>
-        <FormHeading>Member Registration</FormHeading>
+        <FormHeading>Registration</FormHeading>
         <FormBody>
           <Names>
           <FormInput>
@@ -188,7 +195,8 @@ const registrationform = () => {
         </FormBody>
 
         <ButtonGroup>
-            <Button>Back</Button>
+
+            <Button onClick={openpage}>Back</Button>
             <Button>Register</Button>
         </ButtonGroup>
       </Form>
@@ -196,4 +204,4 @@ const registrationform = () => {
   );
 };
 
-export default registrationform;
+export default Registrationform;

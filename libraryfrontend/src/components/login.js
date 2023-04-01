@@ -49,7 +49,7 @@ const FormInput = styled.div`
   margin: 20px auto;
 `;
 const FormLabel = styled.label`
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #000;
   display: block;
@@ -59,11 +59,11 @@ const FormLabel = styled.label`
 const FormInputField = styled.input`
 
   width: 100%;
-  height: 100%;
+  height: 120%;
   border: none;
   border-bottom: 0.5px solid black;
   outline: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 200;
   background-color: rgb(243 240 223);
   color: #000;
@@ -78,12 +78,12 @@ const ButtonGroup = styled.div`
     margin: auto;
     display: flex;
     justify-content: space-around;
-    padding: 10px 0px;
+    padding: 4vh 0px 1vh;
 `;
 const Button = styled.button`
   width: 20%;
   min-width: 50px;
-  height: 36px;
+  height: 42px;
   margin: auto;
   border-radius: 25px;
   border: 0.5px solid black;
@@ -104,46 +104,12 @@ const Button = styled.button`
   }
   
 `;
-const RegisterAs = styled.div`
-    display: block;
-    position: relative;
-    width: 150px;
-    height: 32px;
-    margin: auto;
-    margin-bottom: 7vh;
-    margin-top: 0vh;
-    text-align: center;
-`;
 
-const Dropdown=styled.select`
-    padding: 8px 6px;
-    text-align: center;
-    border: none;
-    border-bottom: 1px solid black;
-    background-color: rgb(243 240 223);
-    margin-top: 2px;
-`;
-const DropdownItem = styled.option`
-    width: 100%;
-    padding: 16px;
-
-`;
-const Passwordblock = styled.div`
-    display: flex;
-    justify-content: space-between;
-    min-height: 72px;
-`;
-const Password = styled.div`
-    width: 40%;
-    height: 28px;
-    margin: 0px auto;
-`;
-
-const loginform = () => {
+const loginform = ({user}) => {
   return (
     <Formpage>
       <Form>
-        <FormHeading>Member Login</FormHeading>
+        <FormHeading>{user}Login</FormHeading>
         <FormBody>
           <FormInput>
             <FormLabel>Username</FormLabel>
