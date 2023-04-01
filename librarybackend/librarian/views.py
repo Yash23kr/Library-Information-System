@@ -127,6 +127,7 @@ def delete_member_alert(request, id):
         return render(request, 'delete_member_alert.html',{'id':id})
     return redirect('/librarian/delete_member/'+str(id))
 @login_required(login_url='/librarian/login')
+
 def view_staff(request):
     try:
         request.user.librarian
