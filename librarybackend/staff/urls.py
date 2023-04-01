@@ -10,5 +10,5 @@ urlpatterns = [
     path('delete_book/<int:book_id>/', views.delete_book, name='delete_book'),
     path('add_book', views.add_book, name='add_book'),
     path('return_requests',views.view_return_request, name='view_return_request'),
-    #path('approve_return/<int:request_id>',views.approve_return, name='approve_return')
+    path('approve_return/<int:request_id>',views.approve_return, name='approve_return')
 ]

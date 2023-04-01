@@ -5,8 +5,9 @@ import datetime
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from members.models import Member
+from members.models import Member,Reminder
 from staff.models import Staff
+
 # Create your views here.
 def register_admin(request):
     if request.method == 'POST':
@@ -178,4 +179,19 @@ def delete_request(request, id):
         return render(request,'error.html')
     StaffRequest.objects.filter(id=id).delete()
     return redirect('/librarian/view_requests')
+
+@login_required(login_url='/librarian/login')
+def send_reminder(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
+    book = Book.objects.filter(id=id)
+    if book[0].issued_to is None:
+        return redirect('/librarian/view_all')
+    member = book[0].issued_to
+    Reminder(user=member, book=book[0], message="Your book is past due, please return the book", reminder_date=datetime.date.today().isoformat()).save()
+    messages.success(request, 'Reminder sent successfully.')
+    return redirect('/librarian/home')
+
         

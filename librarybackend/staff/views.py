@@ -6,6 +6,7 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from librarian.models import StaffRequest
+from members.models import *
 # Create your views here.
 def register_staff(request):
     if request.method == 'POST':
@@ -113,5 +114,36 @@ def approve_return(request, request_id):
         return render(request,'error.html')
     ret_request = Return_request.objects.get(id=request_id)
     if request.method == 'POST':
-        penalty = request.POST.get('penalty','')
+        damage_penalty = float(request.POST.get('penalty',''))
+        member = ret_request.member
+        book = ret_request.book
+        issued_from = ret_request.issue_date
+        issued_till = ret_request.request_date
+        book.issued_to = None
+        reserved_members = book.member_set.all()
+        if len(reserved_members)==0:
+            book.is_available = True
+        else:
+            reserved_members.order_by('reserve_date')
+            reserved_members[0].reserved_book = None
+            reserved_members[0].save()
+            Reminder(user=reserved_members[0], book=book, message="This book is now available. Please issue this book", reminder_date=datetime.date.today().isoformat()).save()
+        book.is_returned = True
+        book.save()
+        issued_days = (issued_till-issued_from).days
+        penalty = 0
+        if (member.user_type == 'UG' or member.user_type == 'PG') and issued_days>30:
+            penalty = 10*(issued_days-30)
+        if member.user_type == 'RS' and issued_days>90:
+            penalty = 10*(issued_days-90)
+        if member.user_type == 'FAC' and issued_days>180:
+            penalty = 10*(issued_days-180)
+        tax=(damage_penalty+penalty)*0.1
+        total_penalty=damage_penalty+penalty+((damage_penalty+penalty)*0.1)
+        subtotal=damage_penalty+penalty
+        ret_request.delete()
+        Issue_database(user=ret_request.member, book=ret_request.book, issued_from=ret_request.issue_date, issued_till=ret_request.request_date, damage_penalty=damage_penalty, penalty=penalty, tax=tax,total_penalty=total_penalty, subtotal=subtotal).save()
+        messages.success(request, 'Return processed successfully')
+        return redirect('/staff/home')
+    return render(request,'staff_confirm_return_request.html')
         

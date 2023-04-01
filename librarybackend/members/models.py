@@ -15,9 +15,11 @@ class Issue_database(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     issued_from = models.DateField()
     issued_till = models.DateField()
-    penalty = models.IntegerField(default = 0)
-    tax = models.IntegerField(default = 0)
-    total_penalty = models.IntegerField(default = 0)
+    penalty = models.FloatField(default = 0)
+    damage_penalty = models.FloatField(default = 0)
+    tax = models.FloatField(default = 0)
+    total_penalty = models.FloatField(default = 0)
+    subtotal = models.FloatField(default = 0)
 
 class Reminder(models.Model):
     user = models.ForeignKey(Member, on_delete=models.CASCADE)

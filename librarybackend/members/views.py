@@ -19,6 +19,8 @@ def register_member(request):
             return render(request, 'member_registration.html', {'message': 'Password mismatch'})
         if len(User.objects.filter(username=username))!=0 or len(StaffRequest.objects.filter(username=username))!=0:
             return render(request, 'member_registration.html', {'message':'user already exists please login'})
+        if len(User.objects.filter(email=email))!=0 or len(StaffRequest.objects.filter(email=email))!=0:
+            return render(request, 'member_registration.html', {'message':'Email has already been used!'})
         user = User.objects.create_user(username=username,password=password1, email=email)
         member = Member.objects.create(user=user, user_type=usertype)
         user.save()
@@ -135,7 +137,7 @@ def return_book(request,book_id):
         request.user.member
     except Exception:
         return render(request,'error.html')
-    member = request.user.member
+    """ member = request.user.member
     book = Book.objects.get(id=book_id)
     issued_from = book.issue_date
     issued_till = datetime.date.today()
@@ -160,7 +162,15 @@ def return_book(request,book_id):
         penalty = 10*(issued_days-180)
     Issue_database(user=member, book=book, issued_from=issued_from, issued_till=issued_till, penalty=penalty, tax=penalty*0.1, total_penalty=penalty*1.1).save()
     messages.success(request, "Book was successfully returned and bill has been generated. Please check the bill under the issue history section")
-    return redirect('/member/home',)
+    return redirect('/member/home',) """
+    member = request.user.member
+    book = Book.objects.get(id=book_id)
+    issued_from = book.issue_date
+    issued_till = datetime.date.today()
+    Return_request(member=member, book=book, issue_date=issued_from, request_date=issued_till).save()
+    messages.success(request, "Return request has been sent to the librarian. You will be notified once the book is returned")
+    return redirect('/member/home')
+
 
 
 @login_required(login_url = '/member/login')

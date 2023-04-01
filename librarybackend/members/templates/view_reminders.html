@@ -72,7 +72,7 @@
             {% if reminder.book.is_returned %}
                 <td><a href="/member/issue_book/{{reminder.book.id}}/">Issue</a></td>
             {% else %} 
-                <td></td>
+                <td><a href="/member/return/{{reminder.book.id}}">Return</a></td>
             {% endif %}
             <td><a href="/member/delete_reminder/{{reminder.id}}">Delete</a></td>
         </tr>
