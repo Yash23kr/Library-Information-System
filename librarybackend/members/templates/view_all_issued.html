@@ -1,11 +1,42 @@
-<a href="/member/home">Home</a>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 80%;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+</style>
+<a href="/member/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
+
 <table>
     <thead>
         <tr>
             <th><h4>Index</h4></th>
             <th><h4>Name</h4></th>
             <th><h4>Author</h4></th>
-            <th><h4>Isbn</h4></th>
+            <th><h4>ISBN</h4></th>
             <th><h4>Actions</h4></th>
         </tr>
     </thead>
@@ -16,8 +47,8 @@
             <td>{{book.name}}</td>
             <td>{{book.author}}</td>
             <td>{{book.isbn}}</td>
-            <td><a href="/member/return/{{book.id}}">Return</a></td>
+            <td><a href="/member/return/{{book.id}}" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Return</a></td>
         </tr>
         {% endfor %}
     </tbody>
-</table>
+</table> 

@@ -1,12 +1,101 @@
 
-<a href="/staff/logout">logout</a>
-<a href="/staff/view_all">View all books</a>
-<a href="/staff/add_book">Add Book</a>
-<h1>Welcome {{request.user.username}}</h1>
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Member Dashboard</title>
+    <style>
+      /* Reset default styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Style the links */
+      a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      /* Style the headings */
+      h1 {
+        font-size: 36px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* Style the messages */
+      .messages {
+        list-style: none;
+        padding: 0;
+        margin: 20px 0;
+      }
+
+      .messages li {
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+      }
+
+      .messages li.info {
+        background-color: #f1f8ff;
+        color: #0366d6;
+      }
+
+      .messages li.success {
+        background-color: #f0fff4;
+        color: #22863a;
+      }
+
+      .messages li.warning {
+        background-color: #fff9d7;
+        color: #9f6000;
+      }
+
+      .messages li.error {
+        background-color: #ffe3e3;
+        color: #cb2431;
+      }
+
+      /* Style the navigation */
+      nav {
+        background-color: #f6f8fa;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+      nav a {
+        margin-right: 20px;
+        font-weight: bold;
+      }
+
+      nav a:last-of-type {
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+        <a href="/staff/logout">Logout</a>
+        <a href="/staff/view_all">View all books</a>
+        <a href="/staff/add_book">Add Book</a>
+    </nav>
+    <h1>Welcome {{request.user.username}}</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>
+
+

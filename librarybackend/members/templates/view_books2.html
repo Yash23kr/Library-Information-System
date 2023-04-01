@@ -1,4 +1,35 @@
-<a href="/member/home">Home</a>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 80%;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+</style>
+<a href="/member/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
+
 <table>
     <thead>
         <tr>
@@ -22,7 +53,7 @@
             <td>{{iter.book.author}}</td>
             <td>{{iter.book.isbn}}</td>
             <td>{{iter.book.rack_number}}</td>
-            <td><a href="/member/view_bill/{{iter.id}}">Bill</a></td>
+            <td><a href="/member/view_bill/{{iter.id}}" style="background-color: #4CAF50; color: #fff; padding: 5px 10px; border-radius: 5px;">Bill</a></td>
         </tr>
         {% endfor %}
     </tbody>
