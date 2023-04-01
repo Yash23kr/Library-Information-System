@@ -11,4 +11,5 @@ class Return_request(models.Model):
     member = models.ForeignKey(Member, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
     issue_date = models.DateField()
+    request_date = models.DateField()
     

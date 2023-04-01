@@ -162,6 +162,7 @@ def return_book(request,book_id):
     messages.success(request, "Book was successfully returned and bill has been generated. Please check the bill under the issue history section")
     return redirect('/member/home',)
 
+
 @login_required(login_url = '/member/login')
 def issue_history(request):
     try:
