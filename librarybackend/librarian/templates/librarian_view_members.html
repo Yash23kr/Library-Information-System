@@ -67,6 +67,9 @@
     <table>
       <thead>
           <th><h4>Name</h4></th>
+          <th><h4>Email</h4></th>
+          <th><h4>Type</h4></th>
+          <th><h4>Reserved Books</h4></th>
           <th><h4>Active Issues</h4></th>
           <th><h4>Actions</h4></th>
       </thead>
@@ -74,6 +77,9 @@
           {% for member in members %}
           <tr>
               <td>{{member.user.username}}</td>
+              <td>{{member.user.email}}</td>
+              <td>{{member.user_type}}</td>
+              <td>{{member.reserved_book.name}}</td>
               <td><a href="/librarian/active_issues/{{member.id}}" class="delete-button">Active Issues</a></td>
               <td><a href="/librarian/delete_member_alert/{{member.id}}" class="delete-button">Delete</a></td>
           </tr>
