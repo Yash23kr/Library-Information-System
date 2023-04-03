@@ -4,17 +4,22 @@ import HomepageSidebar from './components/homepageSidebar';
 import Loginform from './components/login';
 import Registrationform from './components/registration';
 import Navbar from './components/navbar';
-import Profilepage from './components/profile';
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Login from './pages/Login';
 import Registration from './pages/Registration';
+import Landpage from './pages/LandingPage';
+import LoginAs from './pages/LoginAs';
+import Profilepage from './pages/Profilepage';
 
 function App() {
   const location = useLocation();
   return (
     <Routes>
-          <Route path="/" element={<Registration />} />
+          <Route path="/" element={<Landpage />} />
+          <Route path="/loginas" element={<LoginAs />} />
+          <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<Profilepage />} />
     </Routes>
   );
 }
