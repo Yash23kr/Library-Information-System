@@ -194,4 +194,12 @@ def send_reminder(request, id):
     messages.success(request, 'Reminder sent successfully.')
     return redirect('/librarian/home')
 
-        
+@login_required(login_url='/librarian/login')
+def active_issues(request, id):
+    try:
+        request.user.librarian
+    except Exception:
+        return render(request,'error.html')
+    member = Member.objects.filter(id=id)
+    books = member[0].book_set.all()
+    return render(request, 'librarian_active_issues.html', {'books': books})

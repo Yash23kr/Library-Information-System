@@ -18,6 +18,7 @@ urlpatterns = [
     path('approve_request/<int:id>', views.approve_request, name='approve_request'),
     path('delete_request/<int:id>', views.delete_request, name='delete_request'),
     path('send_reminder/<int:id>', views.send_reminder, name='send_reminder'),
+    path('active_issues/<int:id>', views.active_issues, name='active_issues'),
     #path('return_requests',views.view_return_request, name='view_return_request'),
     #path('approve_return/<int:request_id>',views.approve_return, name='approve_return')
 ]

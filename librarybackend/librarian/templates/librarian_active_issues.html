@@ -1,0 +1,92 @@
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #4CAF50;
+    }
+    table {
+        border-collapse: collapse;
+        margin: 20px auto;
+        width: 80%;
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #4CAF50;
+        color: #fff;
+    }
+    h4 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    form {
+        display: flex;
+        align-items: center;
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    button[type="submit"] {
+        padding: 10px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #3e8e41;
+    }
+
+</style>
+
+<a href="/librarian/view_members" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Back</a>
+<form method="POST">{% csrf_token %}
+    <input type="text" name="search" placeholder="Search books...">
+    <button type="submit">Search</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th><h4>Index</h4></th>
+            <th><h4>Name</h4></th>
+            <th><h4>Author</h4></th>
+            <th><h4>Isbn</h4></th>
+            <th><h4>Rack Number</h4></th>
+            <th><h4>Last Issued</h4></th>
+            <th><h4>Send Reminder</h4></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.isbn}}</td>
+            <td>{{book.rack_number}}</td>
+            <td>{{book.last_issued}}</td>
+            <td><a href="/librarian/send_reminder/{{book.id}}">Send</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
