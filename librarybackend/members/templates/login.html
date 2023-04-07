@@ -1,14 +1,107 @@
+<html>
+  <head>
+    <style>
+      .loginformpage {
+        width: 100%;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+      }
+      .loginform {
+        width: 76vw;
+  min-width: 400px;
+  margin: auto;
+  background-color: rgb(243 240 223);
+  border-radius: 28px;
+  padding-bottom: 2vh;
+      }
+  .formheading{
+    padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  background-color: rgb(245, 206, 66);
+  margin-top: 0px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  }
+  .formbody{
+    width: 80%;
+  margin: auto;
+  padding: 10px 20px 10px 0px;
+  }
+  .forminput{
+  margin: 20px 15%;
+  }
+  .formlabel{
+    font-size: 1.4rem;
+  font-weight: 500;
+  color: #000;
+  display: block;
+  padding-left: 10px;
+  }
+  .forminputfield{
+  border: none;
+  border-bottom: 0.5px solid black;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: 200;
+  background-color: rgb(243 240 223);
+  color: #000;
+  padding: 2px 10px;
+  margin: 0.5rem 0 0.5rem;
+  }
+  .forminputfield::placeholder{
+    color: #888;
+  }
+  .loginpagebutton{
+    width: 25%;
+  min-width: 50px;
+  height: 36px;
+  margin: auto;
+  border-radius: 25px;
+  border: 0.5px solid black;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color:black;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: 0.1s;
+  display: block;
+
+  }
+  .loginpagebutton:hover{
+    background-color: #f5ce42;
+    color: black;
+    font-weight: 700;
+    border: 0.5px solid #f1f1f1;
+    box-shadow: 0px 0px 3px 2px #bdbcb9;
+  }
+    </style>
+  </head>
+  <div class="loginformpage">
+    <div class="loginform">
+      <h1 class="formheading">Login</h1>
+      <div class="formbody">
 <form method="POST" style="max-width: 400px; margin: 0 auto;">
     {% csrf_token %}
-    <h1 style="text-align: center; font-size: 32px; margin-bottom: 20px;">{{ message }}</h1>
-    <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
-      <label for="username" style="margin-bottom: 5px; font-size: 18px; font-weight: bold;">Username</label>
-      <input type="text" name="username" id="username" required style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+    <div class="forminput">
+      <label for="username" class="formlabel">Username</label>
+      <input type="text" name="username" id="username" class="forminputfield" placeholder="Enter your Username">
     </div>
-    <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
-      <label for="password" style="margin-bottom: 5px; font-size: 18px; font-weight: bold;">Password</label>
-      <input type="password" required name="password" id="password" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+    <div class="forminput">
+      <label for="password" class="formlabel">Password</label>
+      <input type="password" required name="password" id="password" class="forminputfield" placeholder="Enter your password">
     </div>
-    <button type="submit" style="padding: 8px 16px; background-color: #4CAF50; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 18px; font-weight: bold;">Login</button>
+    <button type="submit" class="loginpagebutton">Login</button>
 </form>
+</div>
+</div>
+  </div>
+</html>
   
