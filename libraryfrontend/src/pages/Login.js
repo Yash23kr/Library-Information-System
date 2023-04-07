@@ -5,7 +5,6 @@ import Navbar from '../components/navbar';
 const Login = () => {
     return ( 
         <div>
-            <Navbar/>
             <Loginform/>
         </div>
      );

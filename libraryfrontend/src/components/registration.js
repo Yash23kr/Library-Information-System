@@ -24,9 +24,9 @@ const FormHeading = styled.h1`
   padding-bottom: 2vh;
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
-  background-color: #f5ce42;
+  background-color: rgb(245, 206, 66);
   margin-top: 0px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #000;
   text-align: center;
@@ -52,7 +52,7 @@ const FormInput = styled.div`
   margin: 0px auto;
 `;
 const FormLabel = styled.label`
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #000;
   display: block;
@@ -66,7 +66,7 @@ const FormInputField = styled.input`
   border: none;
   border-bottom: 0.5px solid black;
   outline: none;
-  font-size: 0.9rem;
+  font-size: 1.3rem;
   font-weight: 200;
   background-color: rgb(243 240 223);
   color: #000;
@@ -88,7 +88,7 @@ const Button = styled.button`
   border-radius: 25px;
   border: 0.5px solid black;
   outline: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   background-color:black;
   color: #f1f1f1;
@@ -122,6 +122,8 @@ const Dropdown=styled.select`
     border-bottom: 1px solid black;
     background-color: rgb(243 240 223);
     margin-top: 2px;
+    font-size: 1.3rem;
+    margin-left: -2rem;
 `;
 const DropdownItem = styled.option`
     width: 100%;
@@ -132,11 +134,6 @@ const Passwordblock = styled.div`
     display: flex;
     justify-content: space-between;
     min-height: 72px;
-`;
-const Password = styled.div`
-    width: 40%;
-    height: 28px;
-    margin: 0px auto;
 `;
 
 const Registrationform = () => {
