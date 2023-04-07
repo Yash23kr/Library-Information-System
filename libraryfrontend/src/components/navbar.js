@@ -15,7 +15,6 @@ const StyledNavbar = styled.nav`
   height: 9vh;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
-  width: 94vw;
   position: sticky;
   top: 0;
   z-index: 100;

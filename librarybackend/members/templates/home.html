@@ -63,31 +63,132 @@
 
       /* Style the navigation */
       nav {
-        background-color: #f6f8fa;
-        padding: 10px;
-        margin-bottom: 20px;
-        border-radius: 5px;
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4vw 0 2vw;
+  height: 9vh;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
       }
 
       nav a {
-        margin-right: 20px;
-        font-weight: bold;
+        text-decoration: none;
+        border-width: 0rem;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
+  font-weight: 500;
+  background-color: white;
+  padding: 0px;
       }
+  nav a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    transform: scale(1.1);
+    transition-duration: 0.25s;
+  }
+  nav a:focus {
+    background-color: white;
+  }
+      
 
       nav a:last-of-type {
         margin-right: 0;
       }
+      .Libname{
+        vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 4.8vh;
+  color: black;
+  float: left;
+  margin: auto 0;
+      }
+      .styledbuttonbar{
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  min-width: 600px;
+  padding: 0 1vw 0 1vw;
+      }
+      .container{
+        height: 80vh;
+    background-color: white;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+    margin: 5vh;
+    display: flex;
+    justify-content: space-between;
+      }
+      .leftcontainer{
+        width: 60%;
+    height: 100%;
+    background-color: white;
+    position: relative;
+      }
+      .rightcontainer{
+        width: 40%;
+    height: 100%;
+    background-color: white;
+      }
+      .Name{
+        font-size: 5rem;
+    font-weight: 500;
+    color: #000;
+    margin: 8% 0 0 10%;
+    background: -webkit-linear-gradient(rgb(245, 206, 66), #676D20);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+      }
+    .Studenttype{
+      font-size: 2rem;
+    font-weight: 200;
+    color: #000;
+    margin: 0 0 0 10%;
+    }
+    .email{
+      font-size: 1.5rem;
+    font-weight: 200;
+    color: #000;
+    margin: 2% 0 3% 10%;
+    }
     </style>
   </head>
   <body>
     <nav>
-      <a href="/member/logout/">Logout</a>
+      <h1 class="Libname">
+        library.io
+      </h1>
+      <div class="styledbuttonbar">
+      
       <a href="/member/view_books">View all books</a>
       <a href="/member/view_all_issued">View active issues</a>
       <a href="/member/history">View Issue history</a>
       <a href="/member/reminders">Reminder</a>
+      <a href="/member/logout/">Logout</a>
+    </div>
     </nav>
-    <h1>Welcome {{user.get_username}}</h1>
+    <div class="container">
+      <div class="leftcontainer">
+    <h1 class="Name">Welcome {{user.get_username}}</h1>
+    {% if member.user_type == "UG" %}
+      <h2 class="Studenttype">Undergraduate student</h2>
+    {% elif member.user_type == "PG" %}
+      <h2 class="Studenttype">Postgraduate student</h2>
+    {% elif member.user_type == "RS" %}
+      <h2 class="Studenttype">Research Scholar</h2>
+    {% elif member.user_type == "FAC" %}
+      <h2 class="Studenttype">Faculty</h2>
+    {% endif %}
+    <h3 class="email">{{member.user.email}}</h3>
+    </div>
+    <div class="rightcontainer">
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -95,6 +196,8 @@
         {% endfor %}
     </ul>
     {% endif %}
+    </div>
+    </div>
   </body>
 </html>
 

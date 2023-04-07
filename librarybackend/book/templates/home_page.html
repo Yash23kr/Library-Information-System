@@ -76,24 +76,100 @@
       nav a:last-of-type {
         margin-right: 0;
       }
-
+      .landingpage{
+        width: 100%;
+    height: 100vh;
+    background-color: rgb(245, 206, 66);
+    display: flex;
+      }
+      .leftland{
+        width: 60%;
+    line-height: 1;
+      }
+      .insideleftdiv{
+        margin: auto;
+    position: relative;
+    margin-top: 10vw;
+    padding-left: 4vw;
+    padding-right: 8vw;
+    
+    
+      }
+      .insideleftdiv h1{
+        font-size: 4.25rem;
+        font-weight: 700;
+        color: #000;
+        margin-bottom: 1vh;
+    }
+    .insideleftdiv p{
+      margin-top: 1vh;
+        margin-bottom: 2vh;
+        padding-left: 4px;
+        font-size: 2rem;
+        font-weight: 200;
+        color: #000;
+    }
+    .Buttoncontainer{
+      margin: auto;
+    display: flex;
+    margin-top: 8vh;
+    }
+    .LoginButton, .RegisterButton{
+      width: 180px;
+    padding: 10px 0;
+    background-color: #000;
+    border: none;
+    border-radius: 5vh;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    margin-left: 4vw;
+    }
+    .LoginButton:hover, .RegisterButton:hover{
+      box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+    }
+    .rightland{
+      width: 40%;
+    }
+    .insiderightdiv{
+      width: 90%;
+    float: left;
+    position: relative;
+    margin-top: 10vw;
+    }
+    .RightImage{
+      margin-top: 5vh;
+    width: 90%;
+    border-radius: 25px;
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+    }
     </style>
   </head>
   <body>
-    <nav>
+    <div class="landingpage">
+      <div class="leftland">
+        <div class="insideleftdiv">
+          <h1>Library Information System</h1>
+          <p>Discover and manage your library's resources seamlessly with our intuitive library information system.</p>
+        </div>
+        <div class="Buttoncontainer">
+          <a href="/member/login"><button class="LoginButton">Login</button></a>
+          <a href="/member/registration"><button class="RegisterButton">Register</button></a>
+        </div>
+      </div>
+    <!-- <nav>
     <a href="/member/login">Member Login</a>
     <a href="/member/registration">Member Registration</a>
     <a href="/staff/login">Staff Login</a>
     <a href="/staff/registration">Staff Registration</a>
     <a href="/librarian/login">Librarian login</a>
-    </nav>
-    <h1>Welcome to the library webpage</h1>
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    </nav> -->
+    <div class="rightland">
+      <div class="insiderightdiv">
+        <img src="https://www.indiafilings.com/learn/wp-content/uploads/2019/05/Digital-Library-of-India.jpg" class="RightImage">
+      </div>
+    
+    </div>
   </body>
 </html>

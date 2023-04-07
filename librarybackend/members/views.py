@@ -47,7 +47,7 @@ def home_member(request):
         request.user.member
     except Exception:
         return render(request,'error.html')
-    return render(request, 'home.html')
+    return render(request, 'home.html',{'member':request.user.member})
 
 @login_required(login_url = '/member/login')
 def view_books(request):
