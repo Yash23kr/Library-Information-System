@@ -9,6 +9,17 @@
   justify-content: center;
   align-items: center;
       }
+      .alert{
+    padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  margin-top: 0px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  }
       .loginform {
         width: 76vw;
   min-width: 400px;
@@ -87,6 +98,9 @@
   <div class="loginformpage">
     <div class="loginform">
       <h1 class="formheading">Login</h1>
+      {% if message %}
+        <h1 class="alert">{{message}}</h1>
+      {% endif %}
       <div class="formbody">
 <form method="POST" style="max-width: 400px; margin: 0 auto;">
     {% csrf_token %}

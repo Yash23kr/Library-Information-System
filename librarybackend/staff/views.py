@@ -17,9 +17,9 @@ def register_staff(request):
         if password1 != password2:
             return render(request, 'staff_registration.html', {'message': 'Password mismatch'})
         if len(User.objects.filter(username=username))!=0:
-            return render(request, 'staff_registration.html', {'message':'user already exists please login'})
+            return render(request, 'staff_registration.html', {'message':'User already exists please login'})
         if len(User.objects.filter(username=username))!=0 or len(StaffRequest.objects.filter(username=username))!=0:
-            return render(request, 'staff_registration.html', {'message':'user already exists please login'})
+            return render(request, 'staff_registration.html', {'message':'Approval request sent to Librarian. Please wait till approval'})
         StaffRequest(username=username, password=password1, email=email).save()
         messages.success(request, 'Staff registration request sent, please wait for the librarian to approve')
         return redirect('/')
@@ -31,7 +31,7 @@ def login_staff(request):
         password = request.POST.get('password', '')
         user = authenticate(username=username, password=password)
         if user is None:
-            return render(request, 'staff_login.html', {'message':'incorrect username or password'})
+            return render(request, 'staff_login.html', {'message':'Incorrect username or password'})
         try:
             user.staff
             login(request,user)
@@ -46,7 +46,7 @@ def staff_home(request):
         request.user.staff
     except Exception:
         return render(request,'error.html')
-    return render(request, 'staff_home.html')
+    return render(request, 'staff_home.html',{'staff': request.user.staff})
 
 @login_required(login_url='/staff/login')
 def logout_staff(request):
