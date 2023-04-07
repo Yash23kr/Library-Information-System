@@ -10,6 +10,7 @@ import Registration from './pages/Registration';
 import Landpage from './pages/LandingPage';
 import LoginAs from './pages/LoginAs';
 import Profilepage from './pages/Profilepage';
+// import FullTable from './components/table/index';
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,8 @@ function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profilepage />} />
+          {/* <Route path="/table" element={<FullTable />} /> */}
+
     </Routes>
   );
 }

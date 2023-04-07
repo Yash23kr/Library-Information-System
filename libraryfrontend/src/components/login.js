@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Formpage = styled.div`
   width: 100%;
-  height: 91vh;
+  height: 100vh;
   display: flex;
   position: fixed;
   justify-content: center;
@@ -22,9 +25,9 @@ const FormHeading = styled.h1`
   padding-bottom: 2vh;
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
-  background-color: #f5ce42;
+  background-color: rgb(245, 206, 66);
   margin-top: 0px;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #000;
   text-align: center;
@@ -34,22 +37,12 @@ const FormBody = styled.div`
   margin: auto;
   padding: 10px 20px 10px 0px;
 `;
-const Names = styled.div`
-    display: flex;
-    min-height: 72px;
-    justify-content: space-between;
-`;
-const Emailroll = styled.div`
-    min-height: 72px;
-    display: flex;
-    justify-content: space-between;
-`;
 const FormInput = styled.div`
   width: 40%;
   margin: 20px auto;
 `;
 const FormLabel = styled.label`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: #000;
   display: block;
@@ -63,12 +56,12 @@ const FormInputField = styled.input`
   border: none;
   border-bottom: 0.5px solid black;
   outline: none;
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 200;
   background-color: rgb(243 240 223);
   color: #000;
   padding: 2px 10px;
-  margin: 0.2rem 0 0.1rem;
+  margin: 0.5rem 0 0.5rem;
   ::placeholder {
     color: #888;
   }
@@ -88,7 +81,7 @@ const Button = styled.button`
   border-radius: 25px;
   border: 0.5px solid black;
   outline: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   background-color:black;
   color: #f1f1f1;
@@ -105,11 +98,15 @@ const Button = styled.button`
   
 `;
 
-const loginform = ({user}) => {
+const Loginform = () => {
+  const navigate=useNavigate();
+  const openpage = () => {
+    navigate("/");
+  };
   return (
     <Formpage>
       <Form>
-        <FormHeading>{user}Login</FormHeading>
+        <FormHeading>Login</FormHeading>
         <FormBody>
           <FormInput>
             <FormLabel>Username</FormLabel>
@@ -123,7 +120,7 @@ const loginform = ({user}) => {
         </FormBody>
 
         <ButtonGroup>
-            <Button>Back</Button>
+            <Button onClick={openpage}>Back</Button>
             <Button>Login</Button>
         </ButtonGroup>
       </Form>
@@ -131,4 +128,4 @@ const loginform = ({user}) => {
   );
 };
 
-export default loginform;
+export default Loginform;

@@ -5,7 +5,6 @@ import Navbar from '../components/navbar';
 const Registration = () => {
     return ( 
         <div>
-            <Navbar/>
             <Registrationform/>
         </div>
      );
