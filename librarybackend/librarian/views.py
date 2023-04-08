@@ -65,8 +65,12 @@ def view_all_books(request):
         return render(request,'error.html')
     if request.method == 'POST':
         name=request.POST.get('search')
-        books = Book.objects.filter(name=name)
-        return render(request, 'librarian_view_all_books.html', {'books':books})
+        books = Book.objects.all()
+        filtered_books=[]
+        for book in books:
+            if name in book.name:
+                filtered_books.append(book)
+        return render(request, 'librarian_view_all_books.html', {'books':filtered_books})
     books = Book.objects.all()
     books = books.order_by('issue_freq')
     books = books.reverse()
