@@ -7,6 +7,7 @@
       .login-as{
         width: 100%;
         height: 100vh;
+        font-family: 'Poppins', sans-serif;
       }
       .CardContainer{
         width: 100%;
@@ -35,18 +36,20 @@
         font-weight: 500;
         color: #000;
       }
+      .CardContainer a{
+        width: 23%;
+      }
       .CardDiv{
-        width: 25%;
         height: 25vh;
         max-height: 20vw;
-        border: 6px solid rgb(245, 206, 66);
         background-color: rgb(245, 206, 66);
         border-radius: 0px;
+        border: 4px solid black;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 10px 10px rgb(62, 62, 62);
         cursor: pointer;
         transition: all 0.2s ease-in-out;
       }
@@ -56,8 +59,8 @@
             color: #000;
         }
         
-        .CardDiv hover{
-            transform: scale(2);
+        .CardDiv:hover{
+            transform: scale(1.1);
         }
     </style>
   </head>
@@ -67,15 +70,21 @@
             Login As
         </h1>
         <div class="CardContainer">
+          <a href="/member/login" class="link">
             <div class="CardDiv">
                 <a href="/member/login" class="link">Member</a>
             </div>
+          </a>
+          <a href="/staff/login" class="link">
             <div class="CardDiv">
                 <a href="/staff/login" class="link">Staff</a>
             </div>
+          </a>
+          <a href="/librarian/login" class="link">
             <div class="CardDiv">
                 <a href="/librarian/login" class="link">Librarian</a>
             </div>
+          </a>
         </div>
     </div>
   </body>
