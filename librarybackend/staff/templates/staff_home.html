@@ -180,14 +180,14 @@
     <h1 class="Name">Welcome {{user.get_username}}</h1>
     <h3 class="email">{{staff.user.email}}</h3>
     </div>
-    <div class="rightcontainer">
-    {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+    <div>
+      {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      {% endif %}
     </div>
     </div>
   </body>
