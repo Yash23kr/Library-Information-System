@@ -68,7 +68,7 @@ def view_all_books(request):
         books = Book.objects.all()
         filtered_books=[]
         for book in books:
-            if name in book.name:
+            if name in book.name.lower():
                 filtered_books.append(book)
         return render(request, 'librarian_view_all_books.html', {'books':filtered_books})
     books = Book.objects.all()

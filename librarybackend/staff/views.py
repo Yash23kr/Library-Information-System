@@ -63,11 +63,12 @@ def view_all_books(request):
         request.user.staff
     except Exception:
         return render(request,'error.html')
-    if request.method == 'POST':name=request.POST.get('search')
+    if request.method == 'POST':
+        name=request.POST.get('search')
         books = Book.objects.all()
         filtered_books=[]
         for book in books:
-            if name in book.name:
+            if name in book.name.lower():
                 filtered_books.append(book)
         return render(request, 'view_all_books.html', {'books':filtered_books})
     books = Book.objects.all()
