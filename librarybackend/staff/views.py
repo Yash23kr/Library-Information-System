@@ -65,7 +65,8 @@ def view_all_books(request):
         return render(request,'error.html')
     if request.method == 'POST':
         name=request.POST.get('search',"")
-        books = Book.objects.all().order_by(request.POST.get('sorttype'))
+        sorttype=request.POST.get('sorttype','issue_freq')
+        books = Book.objects.all().order_by(sorttype)
         filtered_books=[]
         for book in books:
             if name in book.name.lower():
