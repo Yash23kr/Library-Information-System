@@ -142,7 +142,7 @@
     font-weight: 500;
     color: #000;
     margin: 8% 0 5% 10%;
-    background: -webkit-linear-gradient(rgb(245, 206, 66), rgb(62, 62, 62));
+    background: -webkit-linear-gradient(rgb(245, 206, 66), black);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -162,6 +162,51 @@
     #logout:hover{
       color: red;
     }
+    .dropdown {
+  float: left;
+  overflow: hidden;
+  color: black;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgb(245, 206, 66);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
     </style>
   </head>
   <body style="font-family: 'Poppins', sans-serif;">
@@ -170,12 +215,20 @@
         library.io
       </h1>
       <div class="styledbuttonbar">
-      
+      <a href="/member/home">Profile</a>
       <a href="/member/view_books">View all books</a>
-      <a href="/member/view_all_issued">View active issues</a>
-      <a href="/member/history">View Issue history</a>
+      <div class="dropdown">
+          <button class="dropbtn">Your Issues &darr;
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+              <a href="/member/view_all_issued">View Active Issues</a>
+              <a href="/member/history">View Issue History</a>
+          </div>
+        </div>
       <a href="/member/reminders">Reminder</a>
       <a href="/member/logout/" id="logout">Logout</a>
+      
     </div>
     </nav>
     <div class="container">
