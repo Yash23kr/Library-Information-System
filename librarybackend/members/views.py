@@ -134,7 +134,17 @@ def view_all_issued(request):
         return render(request,'error.html')
     member = request.user.member
     books = member.book_set.all()
-    return render(request, 'view_all_issued.html',{'books':books})
+    requests = Return_request.objects.all()
+    print(requests)
+    returned_books = []
+    for item in requests:
+        if item.member == request.user.member:
+            returned_books.append(item.book)
+    filtered_books = []
+    for book in books:
+        if book not in returned_books:
+            filtered_books.append(book)
+    return render(request, 'view_all_issued.html',{'books':filtered_books})
 
 @login_required(login_url = '/member/login')
 def return_book(request,book_id):
