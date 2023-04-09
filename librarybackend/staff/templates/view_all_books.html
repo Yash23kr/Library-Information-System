@@ -83,6 +83,7 @@
             <th><h4>Rack Number</h4></th>
             <th><h4>Issue Frequency</h4></th>
             <th><h4>Last Issued</h4></th>
+            <th><h4>Issued to</h4></th>
             <th><h4>Actions</h4></th>
         </tr>
     </thead>
@@ -96,6 +97,7 @@
             <td>{{book.rack_number}}</td>
             <td>{{book.issue_freq}}</td>
             <td>{{book.last_issued}}</td>
+            <td>{{book.issued_to.user.user_name}}</td>
             <td><a href="/staff/delete_book/{{book.id}}/">Delete</a></td>
         </tr>
         {% endfor %}
