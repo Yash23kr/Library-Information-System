@@ -18,7 +18,7 @@ def register_member(request):
         if password1 != password2:
             return render(request, 'member_registration.html', {'message': 'Password mismatch'})
         if len(User.objects.filter(username=username))!=0 or len(StaffRequest.objects.filter(username=username))!=0:
-            return render(request, 'member_registration.html', {'message':'user already exists please login'})
+            return render(request, 'member_registration.html', {'message':'User already exists please login'})
         if len(User.objects.filter(email=email))!=0 or len(StaffRequest.objects.filter(email=email))!=0:
             return render(request, 'member_registration.html', {'message':'Email has already been used!'})
         user = User.objects.create_user(username=username,password=password1, email=email)
@@ -34,7 +34,7 @@ def login_member(request):
         password = request.POST.get('password', '')
         user = authenticate(username=username, password=password)
         if user is None:
-            return render(request, 'login.html', {'message':'incorrect username or password'})
+            return render(request, 'login.html', {'message':'Incorrect username or password'})
         else:
             login(request,user)
             return redirect('/member/home')
