@@ -1,16 +1,5 @@
 <h3>{{message}}</h3>
-<a href="/librarian/home">Home</a>
-<form method="POST">{% csrf_token %}
-    <span>Book Name</span>
-    <input type="text" name="name" required></input>
-    <span>Author</span>
-    <input type="text" name="author" required></input>
-    <span>ISBN</span>
-    <input type="text" name="isbn" >
-    <span>Rack Number</span>
-    <input type="text" name="rack_no" >
-    <button type="submit">ADD</button>
-</form>
+
 <style>
     body {
       background-color: #F5F5F5;

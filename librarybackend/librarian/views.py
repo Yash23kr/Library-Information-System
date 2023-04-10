@@ -100,7 +100,7 @@ def add_book(request):
         Book(name=name, author=author, isbn=isbn, rack_number=rack_no).save()
         messages.success(request, 'Book successfully added.')
         return redirect('/librarian/home')
-    return render(request, 'add_book.html')
+    return render(request, 'librarian_add_book.html')
 
 @login_required(login_url='/librarian/login')
 def view_members(request):
