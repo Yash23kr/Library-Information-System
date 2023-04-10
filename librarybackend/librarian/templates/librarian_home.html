@@ -112,7 +112,7 @@
         display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50vw;
+  width: 60vw;
   min-width: 600px;
   padding: 0 1vw 0 1vw;
       }
@@ -141,7 +141,7 @@
     font-weight: 500;
     color: #000;
     margin: 8% 0 0 10%;
-    background: -webkit-linear-gradient(rgb(245, 206, 66), #676D20);
+    background: -webkit-linear-gradient(rgb(245, 206, 66), black);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -158,6 +158,10 @@
       color: #000;
       margin: 2% 0 3% 10%;
     }
+    #logout:hover{
+      color:red;
+    }
+    
     </style>
 </head>
 <body>
@@ -166,12 +170,13 @@
       library.io
     </h1>
     <div class="styledbuttonbar">
-    <a href="/librarian/logout">Logout</a>
+    <a href="/librarian/home">Home</a>
     <a href="/librarian/view_all">View all books</a>
     <a href="/librarian/add_book">Add Book</a>
     <a href="/librarian/view_members">View All Members</a>
     <a href="/librarian/view_staff">View Clerks</a>
     <a href="/librarian/view_requests">View Joining requests</a>
+    <a href="/librarian/logout" id="logout">Logout</a>
   </div>
   </nav>
   <div class="container">

@@ -9,6 +9,7 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Poppins', sans-serif;
       }
       /* Style the links */
       a {
@@ -20,12 +21,6 @@
         text-decoration: underline;
       }
     
-      /* Style the headings */
-      h4 {
-        font-size: 24px;
-        color: #333;
-        margin: 0;
-      }
     
       /* Style the table */
       table {
@@ -33,38 +28,127 @@
         width: 100%;
         margin-bottom: 20px;
       }
-    
+      .thead{
+        background-color: rgb(245, 206, 66);
+      }
       th, td {
-        text-align: left;
+        text-align: center;
         padding: 8px;
         border-bottom: 1px solid #ddd;
       }
     
       th {
-        background-color: #f6f8fa;
+        background-color: rgb(245, 206, 66);
         font-weight: bold;
       }
     
       /* Style the delete button */
       .delete-button {
-        background-color: #dc3545;
-        color: #fff;
+        color: red;
         padding: 8px 16px;
         border-radius: 4px;
         text-transform: uppercase;
         font-weight: bold;
+        text-align: center;
       }
-    
-      .delete-button:hover {
-        background-color: #c82333;
+      .issue-button {
+        color: #4CAF50;
+        padding: 8px 16px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: center;
+      }
+      a{
+        transition-duration: 0.2;
+        text-align: center;
+      }
+      a, a:hover{
+        text-decoration: none;
+      }
+      a:hover{
+        transform: scale(1.1);
+      }
+      nav {
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4vw 0 2vw;
+  height: 9vh;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
       }
 
+      nav a {
+        text-decoration: none;
+        border-width: 0rem;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
+  font-weight: 500;
+  background-color: white;
+  padding: 0px;
+      }
+  nav a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    transform: scale(1.1);
+    transition-duration: 0.25s;
+  }
+  nav a:focus {
+    background-color: white;
+  }
+      
+
+      nav a:last-of-type {
+        margin-right: 0;
+      }
+      .Libname{
+        vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 4.8vh;
+  color: black;
+  float: left;
+  margin: auto 0;
+      }
+      .styledbuttonbar{
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+  min-width: 600px;
+  padding: 0 1vw 0 1vw;
+      }
+      #logout:hover{
+        color: red;
+      }
+      .th .h4{
+        font-size: 1.5rem;
+      }
 
     </style>
 </head>
 <body>
-    <a href="/librarian/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
-    <table>
+  <nav>
+    <h1 class="Libname">
+      library.io
+    </h1>
+    <div class="styledbuttonbar">
+    <a href="/librarian/home">Home</a>
+    <a href="/librarian/view_all">View All Books</a>
+    <a href="/librarian/add_book">Add Book</a>
+    <a href="/librarian/view_members">View All Members</a>
+    <a href="/librarian/view_staff">View Clerks</a>
+    <a href="/librarian/view_requests">View Joining requests</a>
+    <a href="/librarian/logout" id="logout">Logout</a>
+  </div>
+  </nav>  
+  <table>
       <thead>
           <th><h4>Name</h4></th>
           <th><h4>Email</h4></th>
@@ -80,7 +164,7 @@
               <td>{{member.user.email}}</td>
               <td>{{member.user_type}}</td>
               <td>{{member.reserved_book.name}}</td>
-              <td><a href="/librarian/active_issues/{{member.id}}" class="delete-button">Active Issues</a></td>
+              <td><a href="/librarian/active_issues/{{member.id}}" class="issue-button">Active Issues</a></td>
               <td><a href="/librarian/delete_member_alert/{{member.id}}" class="delete-button">Delete</a></td>
           </tr>
           {% endfor %}
