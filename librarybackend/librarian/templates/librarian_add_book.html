@@ -1,106 +1,263 @@
-<h3>{{message}}</h3>
 
-<style>
-    body {
-      background-color: #F5F5F5;
-      font-family: 'Poppins', sans-serif;
-    }
+<html>
+  <head>
+    <style>
+      .loginformpage {
+        width: 100%;
+  height: 90vh;
+  display: flex;
+  position: fixed;
+  justify-content: center;
 
-    span[id='Home']{
-        padding-top: 5px;
-    }
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+      }
+      .loginform {
+        width: 76vw;
+  min-width: 400px;
+  margin: auto;
+  background-color: rgb(243 240 223);
+  box-shadow: 10px 10px rgb(62, 62, 62);
+  border: 4px solid black;
+  border-radius: 34px;
+  padding-bottom: 2vh;
+      }
+      .alert{
+    padding-top: 2vh;
+  padding-bottom: 2vh;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  margin-top: 0px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  }
+  .formheading{
+    padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  background-color: rgb(245, 206, 66);
+  border-bottom: 4px solid black;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  }
+  .formbody{
+    width: 80%;
+  margin: auto;
+  padding: 10px 20px 10px 0px;
+  }
+  .forminput{
+  margin: 20px 20%;
+  }
+  .formlabel{
+    font-size: 1.2rem;
+  font-weight: 500;
+  color: #000;
+  display: block;
+  padding-left: 10px;
+  }
+  .forminputfield{
+  border: none;
+  border-bottom: 0.5px solid black;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 200;
+  background-color: rgb(243 240 223);
+  color: #000;
+  padding: 2px 10px;
+  margin: 0.5rem 0 0.5rem;
+  }
+  .forminputfield::placeholder{
+    color: #888;
+  }
+  .loginpagebutton{
+    width: 25%;
+  min-width: 50px;
+  height: 36px;
+  margin: auto;
+  border-radius: 25px;
+  border: 0.5px solid black;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color:black;
+  color: #f1f1f1;
+  cursor: pointer;
+  transition: 0.1s;
+  display: block;
+
+  }
+  .loginpagebutton:hover{
+    background-color: #f5ce42;
+    color: black;
+    font-weight: 700;
+    border: 0.5px solid #f1f1f1;
+    box-shadow: 0px 0px 3px 2px #bdbcb9;
+  }
+  nav {
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4vw 0 2vw;
+  height: 7vh;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+      }
+
+      nav a {
+        text-decoration: none;
+        border-width: 0rem;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
+  font-weight: 500;
+  background-color: white;
+  padding: 0px;
+      }
+  nav a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    transform: scale(1.1);
+    transition-duration: 0.25s;
+  }
+  nav a:focus {
+    background-color: white;
+  }
+      
+
+      nav a:last-of-type {
+        margin-right: 0;
+      }
+      .Libname{
+        vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 4.8vh;
+  color: black;
+  float: left;
+  margin: auto 0;
+      }
+      .styledbuttonbar{
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60vw;
+  min-width: 600px;
+  padding: 0 1vw 0 1vw;
+      }
+      #logout:hover{
+        color: red;
+      }
+      .dropdown {
+  float: left;
+  overflow: hidden;
+  color: black;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: rgb(245, 206, 66);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+    </style>
+  </head>
+  <nav>
+    <h1 class="Libname">
+      library.io
+    </h1>
+    <div class="styledbuttonbar">
+    <a href="/librarian/home">Home</a>
+    <a href="/librarian/add_book">Add Book</a>
+    <div class="dropdown">
+      <button class="dropbtn">View &darr;
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="/librarian/view_all">View all books</a>
+          <a href="/librarian/view_members">View All Members</a>
+          <a href="/librarian/view_staff">View Clerks</a>
+          <a href="/librarian/view_requests">View Joining requests</a>
+      </div>
+    </div>
+
+    <a href="/librarian/logout" id="logout">Logout</a>
+  </div>
+  </nav>
+  <div class="loginformpage">
+    <div class="loginform">
+      <h1 class="formheading">Add Book</h1>
+      {% if message %}
+        <h1 class="alert">{{message}}</h1>
+      {% endif %}
+      <div class="formbody">
+<form method="POST" style="max-width: 400px; margin: 0 auto;">
+    {% csrf_token %}
+    <div class="forminput">
+      <label for="name" class="formlabel">Name</label>
+      <input type="text" required name="name" id="username" class="forminputfield" placeholder="Enter your Username">
+    </div>
+    <div class="forminput">
+      <label for="author" class="formlabel">Author</label>
+      <input type="password" required name="author" id="password" class="forminputfield" placeholder="Enter your password">
+    </div>
+    <div class="forminput">
+      <label for="ISBN" class="formlabel">ISBN</label>
+      <input type="password" required name="ISBN" id="password" class="forminputfield" placeholder="Enter your password">
+    </div>
+    <div class="forminput">
+      <label for="rack_no" class="formlabel">Rack Number</label>
+      <input type="password" required name="rack_no" id="password" class="forminputfield" placeholder="Enter your password">
+    </div>
+
+    <button type="submit" class="loginpagebutton">Add</button>
+</form>
+</div>
+</div>
+  </div>
+</html>
   
-    h3 {
-      font-size: 36px;
-      font-weight: 500;
-      margin-bottom: 30px;
-      color: #222;
-      text-align: center;
-      text-transform: uppercase;
-    }
-  
-    a {
-      color: #0077c2;
-      text-decoration: none;
-      font-weight: bold;
-      margin-right: 20px;
-      margin-top: 5px;
-      padding-top: 5px;
-      padding: 10px;
-      border: 2px solid transparent;
-      border-radius: 5px;
-      transition: all 0.3s ease-in-out;
-    }
-  
-    a:hover {
-      background-color: #0077c2;
-      color: #fff;
-      border-color: #0077c2;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-  
-    form {
-      margin-top: 30px;
-      max-width: 500px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 30px;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-    }
-  
-    label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #444;
-    }
-  
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      font-size: 18px;
-      color: #333;
-      transition: border-color 0.3s ease-in-out;
-      display: inline-block;
-      box-sizing: border-box;
-    }
-  
-    input[type="text"]:focus {
-      outline: none;
-      border-color: #0077c2;
-    }
-  
-    button[type="submit"] {
-      background-color: #0077c2;
-      color: #fff;
-      padding: 12px 30px;
-      border: none;
-      border-radius: 5px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease-in-out;
-      display: block;
-      margin: 4 auto;
-    }
-  
-    button[type="submit"]:hover {
-      background-color: #005fa3;
-    }
-  </style>
-  
-  <h3>{{message}}</h3>
-  <span id="Home"><a href="/librarian/home" class="home-link">Home</a></span>
-  <form method="POST">{% csrf_token %}
-      <label>Book Name<input type="text" name="name" required></label>
-      <label>Author<input type="text" name="author" required></label>
-      <label>ISBN<input type="text" name="ISBN" required></label>
-      <label>Rack Number<input type="text" name="rack_no" required></label>
-      <button type="submit">Add</button>
-  </form>
   
