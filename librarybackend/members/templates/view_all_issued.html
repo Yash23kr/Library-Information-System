@@ -153,6 +153,11 @@
   </div>
   </nav>
 <table>
+  {% if books|length == 0 %}
+        <tr>
+            <td colspan="4" style="text-align: center;">No Issues</td>
+        </tr>
+        {% else %}
     <thead>
         <tr>
             <th><h4>Index</h4></th>
@@ -173,4 +178,5 @@
         </tr>
         {% endfor %}
     </tbody>
+    {% endif %}
 </table> 
