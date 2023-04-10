@@ -149,6 +149,11 @@
   </div>
   </nav>  
   <table>
+    {% if members|length == 0 %}
+    <tr>
+        <td colspan="4" style="text-align: center;">No Members</td>
+    </tr>
+    {% else %}
       <thead>
           <th><h4>Name</h4></th>
           <th><h4>Email</h4></th>
@@ -169,6 +174,7 @@
           </tr>
           {% endfor %}
       </tbody>
+      {% endif %}
   </table>
 </body>
 </html>

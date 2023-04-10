@@ -155,6 +155,11 @@
   </nav>
   <h2>Joining Requests</h2>
   <table>
+    {% if requests|length == 0 %}
+    <tr>
+        <td colspan="4" style="text-align: center;">No requests</td>
+    </tr>
+    {% else %}
     <thead>
       <th>Username</th>
       <th>Email</th>
@@ -171,6 +176,7 @@
       </tr>
       {%endfor%}
     </tbody>
+    {% endif %}
   </table>
 </body>
 </html>

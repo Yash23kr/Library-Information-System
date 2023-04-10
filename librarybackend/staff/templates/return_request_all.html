@@ -32,6 +32,11 @@
 <a href="/staff/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
 
 <table>
+    {% if requests|length == 0 %}
+        <tr>
+            <td colspan="4" style="text-align: center;">No requests</td>
+        </tr>
+        {% else %}
     <thead>
         <th><h4>User</h4></th>
         <th><h4>Book</h4></th>
@@ -39,6 +44,7 @@
         <th><h4>Actions</h4></th>
     </thead>
     <tbody>
+        
         {% for iter in requests %}
         <tr>
             <td>{{iter.member.user.username}}</td>
@@ -47,5 +53,6 @@
             <td><a href="/staff/approve_return/{{iter.id}}" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Approve return</a></td>
         </tr>
         {% endfor %}
+        {% endif %}
     </tbody>
 </table>

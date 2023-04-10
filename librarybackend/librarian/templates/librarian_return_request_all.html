@@ -79,6 +79,11 @@
   <body>
     <a href="/librarian/home">Home</a>
     <table>
+      {% if requests|length == 0 %}
+      <tr>
+          <td colspan="4" style="text-align: center;">No requests</td>
+      </tr>
+      {% else %}
         <thead>
             <th><h4>User</h4></th>
             <th><h4>Book</h4></th>
@@ -95,6 +100,7 @@
             </tr>
             {% endfor %}
         </tbody>
+        {% endif %}
     </table>
   </body>
 </html>
