@@ -61,7 +61,7 @@ def view_books(request):
         books = Book.objects.all().order_by(sorttype)
         filtered_books=[]
         for book in books:
-            if name in book.name.lower():
+            if name.lower() in book.name.lower():
                 filtered_books.append(book)
         return render(request, 'view_books.html', {'books':filtered_books})
     books = Book.objects.all()
