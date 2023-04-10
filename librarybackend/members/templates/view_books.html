@@ -1,8 +1,8 @@
 <style>
     body {
-        font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        font-family: 'Poppins', sans-serif;
     }
     a {
         text-decoration: none;
@@ -161,6 +161,12 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+#reserve{
+    transition-duration: 0.2s;
+}
+#reserve:hover{
+    transform: scale(1.1);
+}
 </style>
 
 <nav>
@@ -222,9 +228,9 @@
             <td>{{book.isbn}}</td>
             <td>{{book.rack_number}}</td>
             {% if book.is_available %}
-                <td><a href="/member/issue_book/{{book.id}}/" style="color:#4CAF50; font-weight: 600;">Issue</a></td>
+                <td id="reserve"><a href="/member/issue_book/{{book.id}}/" style="color:#4CAF50; font-weight: 600;">Issue</a></td>
             {% else %}
-                <td><a href="/member/reserve_book/{{book.id}}/" style="color:rgb(245, 206, 66); font-weight: 600;">Reserve</a></td>                
+                <td id="reserve"><a href="/member/reserve_book/{{book.id}}/" style="color:rgb(245, 206, 66); font-weight: 600;">Reserve</a></td>                
             {% endif %}
         </tr>
         {% endfor %}
