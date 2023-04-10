@@ -6,7 +6,7 @@
     }
     a {
         text-decoration: none;
-        color: #4CAF50;
+        color: rgb(245, 206, 66);
     }
     table {
         border-collapse: collapse;
@@ -19,18 +19,86 @@
         border-bottom: 1px solid #ddd;
     }
     th {
-        background-color: #4CAF50;
-        color: #fff;
+        background-color: rgb(245, 206, 66);
+        color:black;
     }
     h4 {
         margin: 0;
         font-size: 16px;
         font-weight: normal;
     }
+    nav {
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 4vw 0 2vw;
+  height: 9vh;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+      }
 
+      nav a {
+        text-decoration: none;
+        border-width: 0rem;
+  color: black;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5vh;
+  font-weight: 500;
+  background-color: white;
+  padding: 0px;
+      }
+  nav a:hover {
+    text-decoration: none;
+    cursor: pointer;
+    background: white;
+    transform: scale(1.1);
+    transition-duration: 0.25s;
+  }
+  nav a:focus {
+    background-color: white;
+  }
+      
+
+      nav a:last-of-type {
+        margin-right: 0;
+      }
+      .Libname{
+        vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-size: 4.8vh;
+  color: black;
+  float: left;
+  margin: auto 0;
+      }
+      .styledbuttonbar{
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50vw;
+  min-width: 600px;
+  padding: 0 1vw 0 1vw;
+      }
+      #logout:hover{
+  color: red;
+}
 </style>
-<a href="/staff/home" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Home</a>
-
+<nav>
+    <h1 class="Libname">
+      library.io
+    </h1>
+    <div class="styledbuttonbar">
+    
+        <a href="/staff/home">Home</a>
+      <a href="/staff/view_all">View all books</a>
+      <a href="/staff/add_book">Add Book</a>
+      <a href="/staff/return_requests">View Return Requests</a>
+      <a href="/staff/logout" id="logout">Logout</a>
+  </div>
+  </nav>
 <table>
     {% if requests|length == 0 %}
         <tr>
@@ -50,7 +118,7 @@
             <td>{{iter.member.user.username}}</td>
             <td>{{iter.book.name}}</td>
             <td>{{iter.issue_date}}</td>
-            <td><a href="/staff/approve_return/{{iter.id}}" style="display: block; padding: 10px; background-color: #4CAF50; color: #fff; text-align: center;">Approve return</a></td>
+            <td><a href="/staff/approve_return/{{iter.id}}" style="display: block; padding: 10px; background-color: rgb(245, 206, 66); color: black; text-align: center;">Approve return</a></td>
         </tr>
         {% endfor %}
         {% endif %}

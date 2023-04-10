@@ -45,6 +45,17 @@
       display: block;
       text-align: center;
       margin-top: 20px;
+      text-decoration: none;
+    }
+    .homebutton{
+      text-align: center;
+      padding: 10px;
+      background-color: rgb(245, 206, 66);
+      border-radius: 5px;
+      margin-top: 20px;
+  }
+    .homebutton:hover{
+      cursor: pointer;
     }
   </style>
 </head>
@@ -87,6 +98,7 @@
   <div class="total">
     <strong>Total: {{database.total_penalty}} Rupees</strong>
   </div>
-  <a href="/member/home">Go back to home</a>
+  <a href="/member/home"><button class="homebutton">Home</button></a>
+
 </body>
 </html>
