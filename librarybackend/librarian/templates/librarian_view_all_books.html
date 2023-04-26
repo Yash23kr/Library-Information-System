@@ -230,7 +230,11 @@
             <td>{{book.is_returned}}</td>
             <td>{{book.issued_to.user.username}}</td>
             <td><a href="/librarian/delete_book/{{book.id}}/">Delete</a></td>
+            {% if book.issued_to %}
             <td><a href="/librarian/send_reminder/{{book.id}}">Send</a></td>
+            {% else %} 
+            <td></td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>
