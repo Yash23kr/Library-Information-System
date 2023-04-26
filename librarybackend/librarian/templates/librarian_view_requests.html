@@ -53,25 +53,24 @@
     
       /* Buttons */
       .approve-button, .delete-button {
-        background-color: #dc3545;
-        color: #fff;
         padding: 8px 16px;
         border-radius: 4px;
         text-transform: uppercase;
         font-weight: bold;
+        text-decoration: none;
+        transition-duration: 0.2s;
       }
-    
-      .approve-button:hover, .delete-button:hover {
-        background-color: #c82333;
+      .approve-button:hover, .delete-button:hover{
+        text-decoration: none;
+        transform: scale(1.1);
       }
-      
       .approve-button {
-        background-color: rgb(245, 206, 66);
+        color: #218838;
+      }
+      .delete-button{
+        color: red;
       }
       
-      .approve-button:hover {
-        background-color: #218838;
-      }
       nav {
         display: flex;
   justify-content: space-between;
